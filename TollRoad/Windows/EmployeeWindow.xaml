@@ -1,0 +1,247 @@
+﻿<ui:UiWindow x:Class="TollRoad.Windows.EmployeeWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TollRoad.Windows"
+             mc:Ignorable="d"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:modern="http://schemas.modernwpf.com/2019"
+             xmlns:pages="clr-namespace:TollRoad.Windows.Pages"
+             WindowStartupLocation="CenterScreen"
+             WindowState="Maximized"
+             Background="#FF0078D7"
+             modern:ThemeManager.RequestedTheme="Dark"
+             Style="{StaticResource UiWindow}"
+             Title="EmployeeWindow" Height="950" Width="1400">
+    <modern:NavigationView PaneDisplayMode="LeftCompact"
+                               IsBackButtonVisible="Collapsed"
+                               IsSettingsVisible="False"
+                               Foreground="White"
+                                   Padding="0"
+                               FontSize="100"
+                               IsPaneOpen="False"
+                               SelectionChanged="NavigationView_SelectionChanged">
+
+        <modern:NavigationView.Resources>
+            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="#FF0078D7"/>
+            <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#FF0078D7" />
+            <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="White"/>
+        </modern:NavigationView.Resources>
+
+        <modern:NavigationView.MenuItems>
+            
+
+
+            <modern:NavigationViewItem Tag="{x:Type pages:EmployeesPage}"
+                                       Margin="0 5 0 0">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="Person16"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Работники"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+            </modern:NavigationViewItem>
+
+
+            <modern:NavigationViewItem Tag="{x:Type pages:CheckpointsPage}"
+                                       Margin="0 5 0 0">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="Map20"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Пропускные пункты"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+            </modern:NavigationViewItem>
+
+
+            <modern:NavigationViewItem Tag="{x:Type pages:RoutsPage}"
+                                       Margin="0 5 0 0">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="MapDrive16"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Маршруты"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+            </modern:NavigationViewItem>
+
+            <modern:NavigationViewItem Tag="{x:Type pages:TripPages}"
+                                       Margin="0 5 0 0">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="VehicleBus20"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Поездки"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+            </modern:NavigationViewItem>
+
+            <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                                       Margin="0 5 0 0">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="VehicleCarProfileRtl16"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Транспортные средства"
+                                   Margin="1 0 0 0"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+            </modern:NavigationViewItem>
+
+            <modern:NavigationViewItem HasUnrealizedChildren="False"
+                                       VerticalAlignment="Top"
+                                       Height="210"
+                                       Margin="0 5 0 0">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="BookOpen16"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Справочники"
+                                   Margin="1 0 0 0"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+
+                <modern:NavigationViewItem.MenuItems>
+                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                                               Foreground="White"
+                                               FontSize="20"
+                                               Content="Категория ТС"/>
+                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                                               Foreground="White"
+                                               FontSize="20"
+                                               Content="Роли"/>
+                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                                               Foreground="White"
+                                               FontSize="20"
+                                               Content="Пол"/>
+                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                                               Foreground="White"
+                                               FontSize="20"
+                                               Content="Статусы поездок"/>
+                </modern:NavigationViewItem.MenuItems>
+                
+            </modern:NavigationViewItem>
+
+
+
+
+        </modern:NavigationView.MenuItems>
+
+        <modern:NavigationView.FooterMenuItems>
+            <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}">
+                <modern:NavigationViewItem.Content>
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                    Margin="-7 0 0 0"
+                                                 Spacing="5">
+                        <ui:SymbolIcon Symbol="VehicleCarProfileRtl16"
+                                           Foreground="White"
+                                           Filled="True"
+                                           FontSize="25"/>
+                        <TextBlock Text="Транспортные средства"
+                                   Margin="1 0 0 0"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                    </modern:SimpleStackPanel>
+                </modern:NavigationViewItem.Content>
+            </modern:NavigationViewItem>
+        </modern:NavigationView.FooterMenuItems>
+
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="1"
+                        BorderBrush="#FF0078D7"
+                        CornerRadius="20"
+                        Margin="5">
+                <Grid>
+
+                    <modern:SimpleStackPanel HorizontalAlignment="Center">
+                        <Image Source="/Resources/Logo.png"
+                                   Height="{Binding ElementName=EmployeeDataPanel, Path=ActualHeight}"/>
+                    </modern:SimpleStackPanel>
+
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                                 Spacing="10"
+                                                 x:Name="EmployeeDataPanel"
+                                                 HorizontalAlignment="Right"
+                                                 Margin="1 1 10 1">
+                        <Image Source="{Binding Photo}"/>
+                        <modern:SimpleStackPanel Orientation="Vertical"
+                                                     VerticalAlignment="Center">
+                            <TextBlock Foreground="Black" FontSize="20">
+                                    <Run Text="{Binding Surname}"/>
+                                    <Run Text="{Binding Name}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="17" 
+                                           Foreground="Black"
+                                           Text="{Binding IdRoleNavigation.RoleName}"/>
+                        </modern:SimpleStackPanel>
+                    </modern:SimpleStackPanel>
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="#FF0078D7"
+                        BorderThickness="1"
+                        Grid.Row="1"
+                        Margin="5"
+                        CornerRadius="20">
+                <modern:Frame x:Name="MainContent"
+                                  Padding="5 0 5 0">
+
+                </modern:Frame>
+            </Border>
+        </Grid>
+
+    </modern:NavigationView>
+</ui:UiWindow>
+
+

@@ -1,0 +1,118 @@
+﻿<Page x:Class="TollRoad.Windows.Pages.CheckpointsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TollRoad.Windows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:modern="http://schemas.modernwpf.com/2019"
+      Title="CheckpointsPage"
+      xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <gmap:GMapControl x:Name="gMapControl" Loaded="gMapControl_Loaded"
+                          Margin="1 6 1 6"
+                          MouseRightButtonDown="gMapControl_MouseRightButtonDown">
+            <gmap:GMapControl.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить" Click="AddCheckpoint_Click"/>
+                </ContextMenu>
+            </gmap:GMapControl.ContextMenu>
+        </gmap:GMapControl>
+        <Image x:Name="MapIcon" Source="/Resources/MapIcon.png"
+               Height="30"
+               Visibility="Collapsed"/>
+                
+            
+        <Grid
+              Grid.Column="1">
+            <modern:SimpleStackPanel Orientation="Vertical"
+                                     HorizontalAlignment="Center"
+                                     Spacing="15"
+                                     x:Name="CheckPointInfo"
+                                     Visibility="Collapsed">
+                <ui:DynamicScrollViewer IsScrollingHorizontally="True"
+                                        VerticalScrollBarVisibility="Hidden"
+                                        x:Name="PhotoScroll"
+                                        HorizontalScrollBarVisibility="Visible">
+                    <modern:SimpleStackPanel Orientation="Horizontal">
+                        <ItemsControl ItemsSource="{Binding PhotoOfCheckpoints}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1"
+                                        BorderBrush="Blue"
+                                        Margin="5">
+                                        <Image Source="{Binding Photo}"
+                                           Height="200"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <modern:SimpleStackPanel Spacing="10" Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                    </modern:SimpleStackPanel>
+                </ui:DynamicScrollViewer>
+
+                <TextBlock Foreground="Black" TextWrapping="Wrap"
+                           FontSize="15">
+                    <Run Text="Номер точки:" FontWeight="Bold"/>
+                    <Run Text="{Binding Id}"/>
+                </TextBlock>
+
+                <TextBlock Foreground="Black" TextWrapping="Wrap"
+                           FontSize="15">
+                    <Run Text="Максимальная ширина ТС:" FontWeight="Bold"/>
+                    <Run Text="{Binding MaxWidthOfVehicleInMm}"/>
+                    <Run Text="мм"/>
+                </TextBlock>
+
+                <TextBlock Foreground="Black" TextWrapping="Wrap"
+                           FontSize="15">
+                    <Run Text="Максимальная высота ТС:" FontWeight="Bold"/>
+                    <Run Text="{Binding MaxHeightOfVehicleInMm}"/>
+                    <Run Text="мм"/>
+                </TextBlock>
+
+
+                <TextBlock Foreground="Black" TextWrapping="Wrap"
+                           FontSize="15" Text="Работники:" FontWeight="Bold"/>
+                <ui:DynamicScrollViewer Height="100"
+                                        x:Name="Employees">
+                    <ItemsControl ItemsSource="{Binding Employees}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" TextWrapping="Wrap"
+                                            FontSize="15">
+                                    <Run Text="{Binding Surname}"/>
+                                    <Run Text="{Binding Name}"/>
+                                    <Run Text="{Binding Patronymic}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ui:DynamicScrollViewer>
+
+                <ui:Button Icon="Edit16"
+                           IconFilled="True"
+                           Content="Редактировать"
+                           HorizontalAlignment="Center"
+                           Appearance="Primary"
+                           FontSize="17"/>
+            </modern:SimpleStackPanel>
+
+            
+        </Grid>
+    </Grid>
+</Page>

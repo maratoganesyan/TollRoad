@@ -1,0 +1,27 @@
+﻿<ui:UiWindow x:Class="TollRoad.Windows.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TollRoad.Windows"
+        mc:Ignorable="d"
+        Icon="/Resources/Logo.png" 
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:modern="http://schemas.modernwpf.com/2019"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+             Style="{StaticResource UiWindow}"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="LoadingWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    x:Name="MainPanel">
+            <Image Source="/Resources/Logo.png" Width="150"/>
+            <modern:ProgressBar Foreground="Black"
+                                IsIndeterminate="True" 
+                                Width="200"/>
+        </StackPanel>
+    </Grid>
+</ui:UiWindow>
