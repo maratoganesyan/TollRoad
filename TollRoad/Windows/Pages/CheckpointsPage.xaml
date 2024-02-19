@@ -85,6 +85,12 @@
                     <Run Text="мм"/>
                 </TextBlock>
 
+                <TextBlock Foreground="Black" TextWrapping="Wrap"
+                           FontSize="15">
+                    <Run Text="Адрес:" FontWeight="Bold"/>
+                    <Run Text="{Binding Address}"/>
+                </TextBlock>
+
 
                 <TextBlock Foreground="Black" TextWrapping="Wrap"
                            FontSize="15" Text="Работники:" FontWeight="Bold"/>

@@ -12,4 +12,9 @@ public partial class Gender
     public string GenderName { get; set; }
 
     public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+
+    public override string ToString()
+    {
+        return GenderName;
+    }
 }

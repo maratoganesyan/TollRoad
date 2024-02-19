@@ -89,15 +89,5 @@ namespace TollRoad.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] MapIcon1 {
-            get {
-                object obj = ResourceManager.GetObject("MapIcon1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

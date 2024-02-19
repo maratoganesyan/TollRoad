@@ -81,7 +81,12 @@
                                         <TextBlock Foreground="Black" 
                                                    FontSize="{Binding ElementName=FIO, Path=FontSize}">
                                                 <Run Text="Номер точки:" />
-                                                <Run Text="{Binding IdCheckpoint}" />
+                                                <Run Text="{Binding IdCheckpoint, TargetNullValue=Не работает на точках}" />
+                                        </TextBlock>
+                                        <TextBlock Foreground="Black"  TextWrapping="Wrap"
+                                                   FontSize="{Binding ElementName=FIO, Path=FontSize}">
+                                                <Run Text="Адрес точки:" />
+                                                <Run Text="{Binding IdCheckpointNavigation.Address}" />
                                         </TextBlock>
                                         <TextBlock Foreground="Black" 
                                                    FontSize="{Binding ElementName=FIO, Path=FontSize}">

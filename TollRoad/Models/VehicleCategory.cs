@@ -14,4 +14,9 @@ public partial class VehicleCategory
     public decimal FaceCoefficient { get; set; }
 
     public virtual ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
+
+    public override string ToString()
+    {
+        return CategoryName + " " + FaceCoefficient;
+    }
 }

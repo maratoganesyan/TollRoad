@@ -2,6 +2,8 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace TollRoad.Models;
 
@@ -15,6 +17,8 @@ public partial class Checkpoint
 
     public int NumberOfPasses { get; set; }
 
+    public string Address { get; set; }
+
     public int MaxWidthOfVehicleInMm { get; set; }
 
     public int MaxHeightOfVehicleInMm { get; set; }
@@ -26,4 +30,15 @@ public partial class Checkpoint
     public virtual ICollection<Rout> RoutIdFirstCheckpointNavigations { get; set; } = new List<Rout>();
 
     public virtual ICollection<Rout> RoutIdSecondCheckpointNavigations { get; set; } = new List<Rout>();
+
+    public override string ToString()
+    {
+        return Latitude.ToString() + " " +
+                Longitude.ToString() + " " +
+                NumberOfPasses.ToString() + " " +
+                Address + " " +
+                MaxWidthOfVehicleInMm.ToString() + " " +
+                MaxHeightOfVehicleInMm.ToString();
+            
+    }
 }

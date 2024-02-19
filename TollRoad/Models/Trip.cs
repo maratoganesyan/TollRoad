@@ -26,4 +26,10 @@ public partial class Trip
     public virtual Vehicle IdVehicleNavigation { get; set; }
 
     public virtual StatusesOfTrip StatusOfTripNavigation { get; set; }
+
+    public override string ToString()
+    {
+        return IdRoute + " " + IdVehicleNavigation.StateNumber + " " + StatusOfTripNavigation.ToString() + " " +
+                TotalPriceOfTrip + " " + StartDateTimeOfTrip + " " + EndDateTimeOfTrip;
+    }
 }

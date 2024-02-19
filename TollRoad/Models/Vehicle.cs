@@ -22,4 +22,9 @@ public partial class Vehicle
     public virtual VehicleCategory CategoryOfVehicleNavigation { get; set; }
 
     public virtual ICollection<Trip> Trips { get; set; } = new List<Trip>();
+
+    public override string ToString()
+    {
+        return StateNumber + " " + WidthInMm + " " + HeightInMm + " " + WeightInKg + " " + CategoryOfVehicleNavigation.CategoryName;
+    }
 }

@@ -34,4 +34,10 @@ public partial class Employee
     public virtual Gender IdGenderNavigation { get; set; }
 
     public virtual Role IdRoleNavigation { get; set; }
+
+    public override string ToString()
+    {
+        return Surname + " " + Name + " " + Patronymic +
+                PhoneNumber + " " + IdCheckpoint + " " + Login + " " + Password;
+    }
 }

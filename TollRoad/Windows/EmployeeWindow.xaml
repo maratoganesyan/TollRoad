@@ -147,19 +147,19 @@
                 </modern:NavigationViewItem.Content>
 
                 <modern:NavigationViewItem.MenuItems>
-                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                    <modern:NavigationViewItem Tag="{x:Type pages:VehicleCategoryPage}"
                                                Foreground="White"
                                                FontSize="20"
                                                Content="Категория ТС"/>
-                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                    <modern:NavigationViewItem Tag="{x:Type pages:RolesPage}"
                                                Foreground="White"
                                                FontSize="20"
                                                Content="Роли"/>
-                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                    <modern:NavigationViewItem Tag="{x:Type pages:GenderPage}"
                                                Foreground="White"
                                                FontSize="20"
                                                Content="Пол"/>
-                    <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
+                    <modern:NavigationViewItem Tag="{x:Type pages:StatusesOfTripPage}"
                                                Foreground="White"
                                                FontSize="20"
                                                Content="Статусы поездок"/>
@@ -177,12 +177,12 @@
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
-                                                 Spacing="5">
-                        <ui:SymbolIcon Symbol="VehicleCarProfileRtl16"
+                                    Spacing="5">
+                        <ui:SymbolIcon Symbol="ArrowLeft16"
                                            Foreground="White"
                                            Filled="True"
                                            FontSize="25"/>
-                        <TextBlock Text="Транспортные средства"
+                        <TextBlock Text="Выход"
                                    Margin="1 0 0 0"
                                        VerticalAlignment="Center"
                                        Foreground="White"

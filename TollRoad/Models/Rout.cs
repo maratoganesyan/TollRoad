@@ -22,4 +22,9 @@ public partial class Rout
     public virtual Checkpoint IdSecondCheckpointNavigation { get; set; }
 
     public virtual ICollection<Trip> Trips { get; set; } = new List<Trip>();
+
+    public override string ToString()
+    {
+        return DistanceInKm + " " + Fare + " " + IdFirstCheckpointNavigation.Address + " " + IdSecondCheckpointNavigation.Address;
+    }
 }

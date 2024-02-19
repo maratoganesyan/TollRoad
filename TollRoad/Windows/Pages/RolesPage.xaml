@@ -1,14 +1,14 @@
-﻿<Page x:Class="TollRoad.Windows.Pages.RoutsPage"
+﻿<Page x:Class="TollRoad.Windows.Pages.RolesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TollRoad.Windows.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+       d:DesignHeight="450" d:DesignWidth="800"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:modern="http://schemas.modernwpf.com/2019"
-      Title="RoutsPage">
+      Title="TripPage">
     <Grid Background="Transparent">
 
 
@@ -55,7 +55,7 @@
         </modern:SimpleStackPanel>
 
         <ui:DataGrid Grid.Row="1"
-                     x:Name="RoutsDataGrid"
+                     x:Name="RoleDataGrid"
                      AutoGenerateColumns="False"
                      IsReadOnly="True"
                      Margin="0 5 0 0"
@@ -84,19 +84,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Номер марштрута"
-                                    Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Адрес первого КПП"
-                                    Binding="{Binding IdFirstCheckpointNavigation.Address}" />
-                <DataGridTextColumn Header="Адрес второго КПП"
-                                    Binding="{Binding IdSecondCheckpointNavigation.Address}" />
-                <DataGridTextColumn Header="Расстояние между КПП"
-                                    Binding="{Binding DistanceInKm, StringFormat={}{0:0.00} км}" />
-                <DataGridTextColumn Header="Плата"
-                                    Binding="{Binding Fare, StringFormat={}{0:0.00} ₽}"/>
-                </ui:DataGrid.Columns>
+                <DataGridTextColumn Header="Роль"
+                                    Binding="{Binding RoleName}" />
+            </ui:DataGrid.Columns>
 
-                <ui:DataGrid.Resources>
+            <ui:DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"
                        TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background"

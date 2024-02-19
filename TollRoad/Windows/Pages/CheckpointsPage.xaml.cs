@@ -39,6 +39,7 @@ namespace TollRoad.Windows.Pages
         private void gMapControl_Loaded(object sender, RoutedEventArgs e)
         {
             gMapControl.MapProvider = GMapProviders.GoogleMap;
+            gMapControl.Language = Language;
             GMaps.Instance.Mode = AccessMode.ServerOnly;
             gMapControl.Position = new PointLatLng(55.755829, 37.617627); // Координаты центра карты
 
@@ -68,7 +69,7 @@ namespace TollRoad.Windows.Pages
             }
         }
 
-        private void Marker_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void Marker_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var markerShape = sender as Image;
             var checkpoint = DbUtils.db.Checkpoints.FirstOrDefault(p => p.Id == Convert.ToInt32(markerShape.Tag));

@@ -12,20 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TollRoad.Models;
 using TollRoad.Tools;
 
 namespace TollRoad.Windows.Pages
 {
     /// <summary>
-    /// Interaction logic for RoutsPage.xaml
+    /// Interaction logic for GenderPage.xaml
     /// </summary>
-    public partial class RoutsPage : Page
+    public partial class GenderPage : Page
     {
-        public RoutsPage()
+        public GenderPage()
         {
             InitializeComponent();
-            RoutsDataGrid.ItemsSource = DbUtils.db.Routs.ToList();
+            GenderDataGrid.ItemsSource = DbUtils.db.Genders.ToList();
         }
     }
 }

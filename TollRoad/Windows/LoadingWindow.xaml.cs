@@ -34,7 +34,6 @@ namespace TollRoad.Windows
         {
             try
             {
-                DbUtils.db.SaveChanges();
                 var employees = await Task.Run(() => DbUtils.db.Employees.ToList());
                 new AuthWindow().Show();
                 this.Close();

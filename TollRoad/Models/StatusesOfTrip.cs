@@ -12,4 +12,9 @@ public partial class StatusesOfTrip
     public string StatusName { get; set; }
 
     public virtual ICollection<Trip> Trips { get; set; } = new List<Trip>();
+
+    public override string ToString()
+    {
+        return StatusName;
+    }
 }

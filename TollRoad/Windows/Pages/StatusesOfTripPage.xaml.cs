@@ -12,20 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TollRoad.Models;
 using TollRoad.Tools;
 
 namespace TollRoad.Windows.Pages
 {
     /// <summary>
-    /// Interaction logic for RoutsPage.xaml
+    /// Interaction logic for StatusesOfTripPage.xaml
     /// </summary>
-    public partial class RoutsPage : Page
+    public partial class StatusesOfTripPage : Page
     {
-        public RoutsPage()
+        public StatusesOfTripPage()
         {
             InitializeComponent();
-            RoutsDataGrid.ItemsSource = DbUtils.db.Routs.ToList();
+            StatusesDataGrid.ItemsSource = DbUtils.db.StatusesOfTrips.ToList();
         }
     }
 }

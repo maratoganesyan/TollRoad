@@ -53,6 +53,7 @@ public partial class Db : DbContext
             entity.Property(e => e.Longitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MaxHeightOfVehicleInMm).HasColumnName("MaxHeightOfVehicleInMM");
             entity.Property(e => e.MaxWidthOfVehicleInMm).HasColumnName("MaxWidthOfVehicleInMM");
+            entity.Property(e => e.Address).IsRequired().HasMaxLength(150);
         });
 
         modelBuilder.Entity<Employee>(entity =>
