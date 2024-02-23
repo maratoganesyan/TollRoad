@@ -180,7 +180,10 @@ namespace TollRoad.Windows
             if(RolesComboBox.SelectedItem is Role role && role.Id != 1)
             {
                 CheckpointsComboBox.SelectedItem = null;
+                CheckpointsComboBox.IsEnabled = false;
             }
+            else
+                CheckpointsComboBox.IsEnabled = true;
         }
     }
 }
