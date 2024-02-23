@@ -10,10 +10,10 @@
              xmlns:pages="clr-namespace:TollRoad.Windows.Pages"
              WindowStartupLocation="CenterScreen"
              WindowState="Maximized"
-             Background="#FF0078D7"
+             
              modern:ThemeManager.RequestedTheme="Dark"
              Style="{StaticResource UiWindow}"
-             Title="EmployeeWindow" Height="950" Width="1400">
+             Title="Окно работника" Height="950" Width="1400">
     <modern:NavigationView PaneDisplayMode="LeftCompact"
                                IsBackButtonVisible="Collapsed"
                                IsSettingsVisible="False"
@@ -24,8 +24,8 @@
                                SelectionChanged="NavigationView_SelectionChanged">
 
         <modern:NavigationView.Resources>
-            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="#FF0078D7"/>
-            <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#FF0078D7" />
+            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="#4f9ce3"/>
+            <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#4f9ce3" />
             <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="White"/>
         </modern:NavigationView.Resources>
 
@@ -173,7 +173,7 @@
         </modern:NavigationView.MenuItems>
 
         <modern:NavigationView.FooterMenuItems>
-            <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}">
+            <modern:NavigationViewItem Tag="Back">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
@@ -236,6 +236,8 @@
                         CornerRadius="20">
                 <modern:Frame x:Name="MainContent"
                                   Padding="5 0 5 0">
+                    
+                    
 
                 </modern:Frame>
             </Border>

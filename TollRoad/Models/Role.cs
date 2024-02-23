@@ -17,4 +17,5 @@ public partial class Role
     {
         return RoleName;
     }
+
 }

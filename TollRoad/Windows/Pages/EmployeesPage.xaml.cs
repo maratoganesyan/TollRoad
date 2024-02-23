@@ -26,7 +26,27 @@ namespace TollRoad.Windows.Pages
         {
             InitializeComponent();
             UsersOutput.ItemsSource = DbUtils.db.Employees.ToList();
-            Employee employee;
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            new EmployeeAddAndChange(false).ShowDialog();
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            UsersOutput.ItemsSource = DbUtils.db.Employees.ToList();
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var employee = (sender as Button).DataContext as Employee;
+            new EmployeeAddAndChange(true, employee).ShowDialog();
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UsersOutput.ItemsSource = DbUtils.db.Employees.ToList().Where(u => u.ToString().Contains(SearchTextBox.Text));
         }
     }
 }

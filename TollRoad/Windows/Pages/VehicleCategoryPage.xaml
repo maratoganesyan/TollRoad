@@ -27,6 +27,7 @@
                                  VerticalAlignment="Center">
             <ui:AutoSuggestBox x:Name="SearchTextBox"
                                VerticalAlignment="Center"
+                               TextChanged="SearchTextBox_TextChanged"
                                PlaceholderText="Поиск"
                                FontSize="20"
                                Width="200"/>
@@ -38,6 +39,8 @@
                                  VerticalAlignment="Center">
             <ui:Button Icon="ArrowSync16"
                        FontSize="35"
+                       x:Name="RefreshButton"
+                       Click="RefreshButton_Click"
                        IconFilled="True"
                        Appearance="Primary"/>
 
@@ -48,6 +51,8 @@
                                  VerticalAlignment="Center">
             <ui:Button Icon="Add16"
                        IconFilled="True"
+                       x:Name="AddButton"
+                       Click="AddButton_Click"
                        Content="Добавить"
                        Appearance="Primary"
                        FontSize="20"/>
@@ -77,6 +82,7 @@
                                        Appearance="Primary"
                                        BorderThickness="1"
                                        x:Name="ChangeButton"
+                                       Click="ChangeButton_Click"
                                        HorizontalAlignment="Center"
                                        IconForeground="White"
                                        ToolTip="Изменить"/>

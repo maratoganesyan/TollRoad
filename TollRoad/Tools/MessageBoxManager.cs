@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Wpf.Ui.Controls;
 
 namespace TollRoad.Tools
@@ -28,7 +29,10 @@ namespace TollRoad.Tools
 
         public void Show(string title, string content)
         {
-            box.Show(title, content);
+            TextBlock textBlock = new TextBlock();
+            textBlock.TextWrapping = System.Windows.TextWrapping.Wrap;
+            textBlock.Text = content;
+            box.Show(title, textBlock);
         }
 
     }

@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="EasyCaptcha.Wpf" Version="0.9.0.3" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
     <PackageReference Include="Geocoding.Microsoft" Version="4.0.1" />
     <PackageReference Include="GMap.NET.WinPresentation" Version="2.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.14" />
@@ -49,6 +50,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\EmployeeAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\VehicleCategoryAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\StatusesOfTripAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\RoleAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\GenderAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Windows\AddAndChangeWindows\" />
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

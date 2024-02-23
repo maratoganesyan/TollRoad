@@ -38,6 +38,7 @@ public partial class Employee
     public override string ToString()
     {
         return Surname + " " + Name + " " + Patronymic +
-                PhoneNumber + " " + IdCheckpoint + " " + Login + " " + Password;
+                PhoneNumber + " " + IdCheckpointNavigation + " " + Login + " " + Password + " "
+                + IdRoleNavigation.RoleName + " " + IdGenderNavigation.GenderName;
     }
 }

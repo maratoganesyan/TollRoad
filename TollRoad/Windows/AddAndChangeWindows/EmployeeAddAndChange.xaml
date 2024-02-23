@@ -1,0 +1,182 @@
+﻿<ui:UiWindow x:Class="TollRoad.Windows.EmployeeAddAndChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TollRoad.Windows"
+        mc:Ignorable="d"
+        Icon="/Resources/Logo.png" 
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:modern="http://schemas.modernwpf.com/2019"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             MinHeight="360"
+             MinWidth="300"
+        WindowStartupLocation="CenterScreen"
+        Title="Окно добавления и изменения" Height="500" Width="530">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <modern:SimpleStackPanel Margin="10"
+                                     Grid.Column="1"
+                                     x:Name="PhotoStackPanel">
+                <ui:Button HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch"
+                            BorderThickness="1"
+                           Padding="0"
+                           x:Name="PhotoButton"
+                           Click="PhotoButton_Click"
+                           HorizontalContentAlignment="Center"
+                           Width="{Binding ElementName=PhotoStackPanel, Path=ActualHeight}"
+                           Height="{Binding ElementName=PhotoStackPanel, Path=ActualHeight}">
+                           
+                    <Button.Content>
+                        <Image x:Name="UserPhoto"
+                               Source="{Binding Photo}"/>
+                    </Button.Content>
+                </ui:Button>
+            </modern:SimpleStackPanel>
+
+            <Grid Grid.Column="0">
+                <modern:SimpleStackPanel Margin="10"
+                                         Spacing="20"
+                                         VerticalAlignment="Center">
+                    <ui:TextBox PlaceholderText="Введите Фамилию"
+                        Icon="Person16"
+                        FontSize="16"
+                        IconFilled="True"
+                        x:Name="SurnameTextBox"/>
+                    <ui:TextBox PlaceholderText="Введите имя"
+                        Icon="Person16"
+                        FontSize="16"
+                        IconFilled="True"
+                        x:Name="NameTextBox"/>
+                    <ui:TextBox PlaceholderText="Введите отчество"
+                        Icon="Person16"
+                        FontSize="16"
+                        IconFilled="True"
+                        x:Name="PatronymicTextBox"/>
+                </modern:SimpleStackPanel>
+            </Grid>
+
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <modern:SimpleStackPanel Spacing="30"
+                                     Margin="10, 0 10, 30"
+                                     VerticalAlignment="Center">
+
+                <ComboBox x:Name="RolesComboBox"
+                          FontSize="16"
+                          BorderThickness="1"
+                          Foreground="Black"
+                          modern:ControlHelper.PlaceholderText="Выберите роль"
+                          BorderBrush="Black"
+                          SelectionChanged="RolesComboBox_SelectionChanged"
+                          modern:ControlHelper.PlaceholderForeground="Black"
+                          Width="{Binding ElementName=LoginTextBox, Path=ActualWidth}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RoleName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                    
+                </ComboBox>
+
+                <ComboBox x:Name="GenderComboBox"
+                          FontSize="16"
+                          Foreground="Black"
+                          Background="Transparent"
+                          modern:ControlHelper.PlaceholderText="Выберите пол"
+                          BorderBrush="Black"
+                          modern:ControlHelper.PlaceholderForeground="Black"
+                          Width="{Binding ElementName=LoginTextBox, Path=ActualWidth}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding GenderName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ComboBox x:Name="CheckpointsComboBox"
+                          FontSize="16"
+                          BorderThickness="1"
+                          Foreground="Black"
+                          modern:ControlHelper.PlaceholderText="Выберите КПП"
+                          BorderBrush="Black"
+                          modern:ControlHelper.PlaceholderForeground="Black"
+                          Width="{Binding ElementName=LoginTextBox, Path=ActualWidth}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock >
+                                <Run Text="{Binding Id}"/>
+                                <Run Text="{Binding Address}"/>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+
+                </ComboBox>
+
+
+            </modern:SimpleStackPanel>
+
+
+            <modern:SimpleStackPanel Spacing="30"
+                                     Grid.Column="1"
+                                     Margin="10, 0 10, 30"
+                                     VerticalAlignment="Center">
+                <xctk:MaskedTextBox x:Name="_maskedPhone"
+                                    Mask="+7 (000) 000-00-00"
+                                    Visibility="Collapsed"/>
+                <ui:TextBox PlaceholderText="Введите номер телефона"
+                        Icon="Phone12"
+                        FontSize="16"
+                            Text="{Binding Text, ElementName=_maskedPhone, ValidatesOnExceptions=False}"
+                        x:Name="PhoneNumberTextBox"/>
+
+                <ui:TextBox PlaceholderText="Введите логин"
+                        Icon="PersonAccounts20"
+                        FontSize="16"
+                        x:Name="LoginTextBox"/>
+
+                <ui:TextBox PlaceholderText="Введите Пароль"
+                        Icon="PersonAccounts20"
+                        FontSize="16"
+                        x:Name="PasswordTextBox"/>
+            </modern:SimpleStackPanel>
+
+
+            <ui:Button Grid.ColumnSpan="2"
+                    VerticalAlignment="Bottom"
+                    Appearance="Primary"
+                       FontSize="16"
+                       Click="SaveButton_Click"
+                       HorizontalAlignment="Center"
+                       Margin="0 0 0 10"
+                       Width="{Binding ElementName=LoginTextBox, Path=ActualWidth}"
+                       x:Name="SaveButton"
+                       Content="Сохранить">
+                
+            </ui:Button>
+        </Grid>
+    </Grid>
+</ui:UiWindow>

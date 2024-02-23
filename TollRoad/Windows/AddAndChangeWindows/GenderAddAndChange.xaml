@@ -1,0 +1,38 @@
+﻿<ui:UiWindow x:Class="TollRoad.Windows.GenderAddAndChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TollRoad.Windows"
+        mc:Ignorable="d"
+        Icon="/Resources/Logo.png" 
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:modern="http://schemas.modernwpf.com/2019"
+             MinHeight="360"
+             MinWidth="300"
+        WindowStartupLocation="CenterScreen"
+        Title="Окно добавления и изменения" Height="370" Width="300">
+    <Grid>
+        <modern:SimpleStackPanel VerticalAlignment="Center"
+                                 Spacing="30"
+                                 Margin="20 0">
+
+            <Image Source="/Resources/Logo.png" Height="150"/>
+
+            <ui:TextBox PlaceholderText="Введите пол"
+                        FontSize="16"
+                        MaxLength="10"
+                        x:Name="GenderNameTextBox"/>
+
+            <ui:Button Content="Сохранить"
+                       HorizontalAlignment="Stretch"
+                       Appearance="Primary"
+                       FontSize="19"
+                       Click="SaveButton_Click"
+                       x:Name="SaveButton"
+                       Margin="0 15 0 0" />
+
+
+        </modern:SimpleStackPanel>
+    </Grid>
+</ui:UiWindow>

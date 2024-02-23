@@ -40,20 +40,21 @@ public partial class Db : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseLazyLoadingProxies();
-        optionsBuilder.UseSqlServer("Data Source=DESKTOP-S7OLEVV\\SQLEXPRESS;Initial Catalog=TollRoads;Integrated Security=True;Encrypt=false;");
+        optionsBuilder.UseSqlServer("Data Source=DESKTOP-S7OLEVV\\SQLEXPRESS;Initial Catalog=TollRoads;Integrated Security=True;Encrypt=false");
     }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Checkpoint>(entity =>
         {
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Address)
+                .IsRequired()
+                .HasMaxLength(150);
             entity.Property(e => e.Latitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.Longitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MaxHeightOfVehicleInMm).HasColumnName("MaxHeightOfVehicleInMM");
             entity.Property(e => e.MaxWidthOfVehicleInMm).HasColumnName("MaxWidthOfVehicleInMM");
-            entity.Property(e => e.Address).IsRequired().HasMaxLength(150);
         });
 
         modelBuilder.Entity<Employee>(entity =>

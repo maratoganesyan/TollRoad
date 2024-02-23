@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TollRoad.Windows"
         mc:Ignorable="d"
-         Icon="/Resources/Logo.png" 
+        Icon="/Resources/Logo.png" 
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:modern="http://schemas.modernwpf.com/2019"
              xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"

@@ -23,6 +23,7 @@
                                  VerticalAlignment="Center">
             <ui:AutoSuggestBox x:Name="SearchTextBox"
                                VerticalAlignment="Center"
+                               TextChanged="SearchTextBox_TextChanged"
                                PlaceholderText="Поиск"
                                FontSize="20"
                                Width="200"/>
@@ -35,6 +36,8 @@
             <ui:Button Icon="ArrowSync16"
                        FontSize="35"
                        IconFilled="True"
+                       x:Name="RefreshButton"
+                       Click="RefreshButton_Click"
                        Appearance="Primary"/>
 
         </modern:SimpleStackPanel>
@@ -45,6 +48,8 @@
             <ui:Button Icon="Add16"
                        IconFilled="True"
                        Content="Добавить"
+                       x:Name="AddButton"
+                       Click="AddButton_Click"
                        Appearance="Primary"
                        FontSize="20"/>
             
@@ -116,6 +121,8 @@
                                         <ui:Button Icon="Edit16"
                                                    IconFilled="True"
                                                    Content="Редактировать"
+                                                   x:Name="ChangeButton"
+                                                   Click="ChangeButton_Click"
                                                    HorizontalAlignment="Center"
                                                    Appearance="Primary"
                                                    FontSize="17"/>

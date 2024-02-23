@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TollRoad.Models;
+using TollRoad.Windows.Pages;
 using Wpf.Ui.Controls;
 
 namespace TollRoad.Windows
@@ -26,6 +27,7 @@ namespace TollRoad.Windows
         {
             InitializeComponent();
             EmployeeDataPanel.DataContext = employee;
+            MainContent.Content = new EmptyPage();
         }
 
         
@@ -36,6 +38,12 @@ namespace TollRoad.Windows
             if (item.Tag is Type pageType && typeof(System.Windows.Controls.Page).IsAssignableFrom(pageType))
             {
                 MainContent.Content = (System.Windows.Controls.Page)Activator.CreateInstance(pageType);
+            }
+            else if(item.Tag != null)
+            {
+                AuthWindow window = new AuthWindow();
+                window.Show();
+                this.Close();
             }
         }
     }

@@ -2,8 +2,6 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
 
 namespace TollRoad.Models;
 
@@ -15,9 +13,9 @@ public partial class Checkpoint
 
     public decimal Longitude { get; set; }
 
-    public int NumberOfPasses { get; set; }
-
     public string Address { get; set; }
+
+    public int NumberOfPasses { get; set; }
 
     public int MaxWidthOfVehicleInMm { get; set; }
 
@@ -39,6 +37,6 @@ public partial class Checkpoint
                 Address + " " +
                 MaxWidthOfVehicleInMm.ToString() + " " +
                 MaxHeightOfVehicleInMm.ToString();
-            
+
     }
 }
