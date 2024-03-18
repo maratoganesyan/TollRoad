@@ -97,6 +97,14 @@ namespace TollRoad.Windows.Pages
             //marker.Shape.MouseLeftButtonDown += Marker_MouseLeftButtonDown;
 
             //gMapControl.Markers.Add(marker);
+
+            new CheckpointAddAndChange(lat, lng).ShowDialog();
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var checkpoint = (sender as Wpf.Ui.Controls.Button).DataContext as Checkpoint;
+            new CheckpointAddAndChange(checkpoint).ShowDialog();
         }
     }
 }

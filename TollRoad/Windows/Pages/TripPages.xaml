@@ -28,6 +28,7 @@
             <ui:AutoSuggestBox x:Name="SearchTextBox"
                                VerticalAlignment="Center"
                                PlaceholderText="Поиск"
+                               TextChanged="SearchTextBox_TextChanged"
                                FontSize="20"
                                Width="200"/>
 
@@ -38,6 +39,8 @@
                                  VerticalAlignment="Center">
             <ui:Button Icon="ArrowSync16"
                        FontSize="35"
+                       x:Name="RefreshButton"
+                       Click="RefreshButton_Click"
                        IconFilled="True"
                        Appearance="Primary"/>
 
@@ -49,6 +52,8 @@
             <ui:Button Icon="Add16"
                        IconFilled="True"
                        Content="Добавить"
+                       x:Name="AddButton"
+                       Click="AddButton_Click"
                        Appearance="Primary"
                        FontSize="20"/>
 
@@ -77,6 +82,7 @@
                                        Appearance="Primary"
                                        BorderThickness="1"
                                        x:Name="ChangeButton"
+                                       Click="ChangeButton_Click"
                                        HorizontalAlignment="Center"
                                        IconForeground="White"
                                        ToolTip="Изменить"/>
@@ -88,9 +94,11 @@
                                     Binding="{Binding IdRouteNavigation.Id}" />
                 <DataGridTextColumn Header="Гос. номер ТС"
                                     Binding="{Binding IdVehicleNavigation.StateNumber}" />
+                <DataGridTextColumn Header="Стоимость поездки"
+                                    Binding="{Binding TotalPriceOfTrip}" />
                 <DataGridTextColumn Header="Дата начала поездки"
                                     Binding="{Binding StartDateTimeOfTrip, StringFormat={}{0:dd.MM.yyyy HH.mm}}" />
-                <DataGridTextColumn Header="Стоимость поездки"
+                <DataGridTextColumn Header="Дата окончания поездки"
                                     Binding="{Binding EndDateTimeOfTrip, StringFormat={}{0:dd.MM.yyyy HH.mm}}"/>
                 <DataGridTextColumn Header="Статус поездки"
                                     Binding="{Binding StatusOfTripNavigation.StatusName}"/>

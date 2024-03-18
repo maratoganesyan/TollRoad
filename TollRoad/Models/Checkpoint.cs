@@ -15,8 +15,6 @@ public partial class Checkpoint
 
     public string Address { get; set; }
 
-    public int NumberOfPasses { get; set; }
-
     public int MaxWidthOfVehicleInMm { get; set; }
 
     public int MaxHeightOfVehicleInMm { get; set; }
@@ -33,7 +31,6 @@ public partial class Checkpoint
     {
         return Latitude.ToString() + " " +
                 Longitude.ToString() + " " +
-                NumberOfPasses.ToString() + " " +
                 Address + " " +
                 MaxWidthOfVehicleInMm.ToString() + " " +
                 MaxHeightOfVehicleInMm.ToString();

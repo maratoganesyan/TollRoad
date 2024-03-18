@@ -113,12 +113,13 @@
                 <ui:Button Icon="Edit16"
                            IconFilled="True"
                            Content="Редактировать"
+                           x:Name="ChangeButton"
+                           Click="ChangeButton_Click"
                            HorizontalAlignment="Center"
                            Appearance="Primary"
                            FontSize="17"/>
             </modern:SimpleStackPanel>
 
-            
         </Grid>
     </Grid>
 </Page>

@@ -53,6 +53,18 @@
     <Compile Update="Windows\AddAndChangeWindows\EmployeeAddAndChange.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\CheckpointAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\TripAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\RoutAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\AddAndChangeWindows\VehicleAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\AddAndChangeWindows\VehicleCategoryAddAndChange.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

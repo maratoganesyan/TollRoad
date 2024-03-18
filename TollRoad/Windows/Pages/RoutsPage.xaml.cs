@@ -27,5 +27,26 @@ namespace TollRoad.Windows.Pages
             InitializeComponent();
             RoutsDataGrid.ItemsSource = DbUtils.db.Routs.ToList();
         }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RoutsDataGrid.ItemsSource = DbUtils.db.Routs.ToList().Where(r => r.ToString().Contains(SearchTextBox.Text));
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            RoutsDataGrid.ItemsSource = DbUtils.db.Routs.ToList();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            new RoutAddAndChange(false).ShowDialog();
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var rout = (sender as Button).DataContext as Rout;
+            new RoutAddAndChange(true, rout).ShowDialog();
+        }
     }
 }
