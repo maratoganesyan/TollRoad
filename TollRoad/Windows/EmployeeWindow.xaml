@@ -30,11 +30,11 @@
         </modern:NavigationView.Resources>
 
         <modern:NavigationView.MenuItems>
-            
-
+           
 
             <modern:NavigationViewItem Tag="{x:Type pages:EmployeesPage}"
-                                       Margin="0 5 0 0">
+                                       Margin="0 5 0 0"
+                                       x:Name="EmployeeNVI">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
@@ -53,7 +53,8 @@
 
 
             <modern:NavigationViewItem Tag="{x:Type pages:CheckpointsPage}"
-                                       Margin="0 5 0 0">
+                                       Margin="0 5 0 0"
+                                       x:Name="CheckpointNVI">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
@@ -72,7 +73,8 @@
 
 
             <modern:NavigationViewItem Tag="{x:Type pages:RoutsPage}"
-                                       Margin="0 5 0 0">
+                                       Margin="0 5 0 0"
+                                       x:Name="RoutNVI">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
@@ -90,7 +92,8 @@
             </modern:NavigationViewItem>
 
             <modern:NavigationViewItem Tag="{x:Type pages:TripPages}"
-                                       Margin="0 5 0 0">
+                                       Margin="0 5 0 0"
+                                       x:Name="TripNVI">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
@@ -108,7 +111,8 @@
             </modern:NavigationViewItem>
 
             <modern:NavigationViewItem Tag="{x:Type pages:VehiclePage}"
-                                       Margin="0 5 0 0">
+                                       Margin="0 5 0 0"
+                                       x:Name="VehicleNVI">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"
                                     Margin="-7 0 0 0"
@@ -129,6 +133,7 @@
             <modern:NavigationViewItem HasUnrealizedChildren="False"
                                        VerticalAlignment="Top"
                                        Height="210"
+                                       x:Name="SprInf"
                                        Margin="0 5 0 0">
                 <modern:NavigationViewItem.Content>
                     <modern:SimpleStackPanel Orientation="Horizontal"

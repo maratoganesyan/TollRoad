@@ -17,8 +17,7 @@
                                  Spacing="20"
                                  Margin="30 0">
 
-            <Border BorderBrush="White"
-                            BorderThickness="1"
+            <Border 
                             Margin="10"
                             CornerRadius="10">
                 <Grid>
@@ -41,8 +40,7 @@
                           Height="250"
                           x:Name="PhotosGrid">
 
-                        <Border BorderThickness="0 1 0 0"
-                                BorderBrush="White">
+                        <Border>
                             <ScrollViewer Margin="7">
                                 <ItemsControl x:Name="PhotosView">
                                     <ItemsControl.ItemTemplate>
@@ -54,7 +52,7 @@
                                                                 Padding="-10"
                                                                 Click="ChangePhoto_CLick">
                                                     <Button.Content>
-                                                        <Image Source="{Binding Photo}" />
+                                                        <Image Source="{Binding Photo}"/>
                                                     </Button.Content>
                                                 </Button>
                                             </Border>

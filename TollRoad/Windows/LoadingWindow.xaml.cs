@@ -43,6 +43,7 @@ namespace TollRoad.Windows
             {
                 MessageBoxManager manager = new MessageBoxManager();
                 manager.Show("Ошибка", "Ошибка подключения к базе данных");
+                Close();
             }
         }
 

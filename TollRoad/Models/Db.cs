@@ -40,7 +40,7 @@ public partial class Db : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseLazyLoadingProxies();
-        optionsBuilder.UseSqlServer("Data Source=DESKTOP-S7OLEVV\\SQLEXPRESS;Initial Catalog=TollRoads;Integrated Security=True;Encrypt=false");
+        optionsBuilder.UseSqlServer("Data Source=DESKTOP-82PHLEE;Initial Catalog=TollRoads;Integrated Security=True;Encrypt=false");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

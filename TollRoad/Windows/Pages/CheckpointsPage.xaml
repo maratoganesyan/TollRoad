@@ -118,8 +118,28 @@
                            HorizontalAlignment="Center"
                            Appearance="Primary"
                            FontSize="17"/>
+
+                <ui:Button Icon="Document16"
+                           IconFilled="True"
+                           Content="Отчёт"
+                           x:Name="ReportButton"
+                           Click="ReportButton_Click"
+                           HorizontalAlignment="Center"
+                           Appearance="Primary"
+                           FontSize="17"/>
             </modern:SimpleStackPanel>
 
+            <modern:SimpleStackPanel HorizontalAlignment="Center"
+                                 Margin="0 0 0 10"
+                                 VerticalAlignment="Bottom">
+                <ui:Button Icon="ArrowSync16"
+                       FontSize="35"
+                       IconFilled="True"
+                       x:Name="RefreshButton"
+                       Click="RefreshButton_Click"
+                       Appearance="Primary"/>
+
+            </modern:SimpleStackPanel>
         </Grid>
     </Grid>
 </Page>

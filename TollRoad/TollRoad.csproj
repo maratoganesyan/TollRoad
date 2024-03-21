@@ -22,6 +22,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>7</VersionMinor>
+      <VersionMajor>8</VersionMajor>
+      <Guid>00020905-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EasyCaptcha.Wpf" Version="0.9.0.3" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
     <PackageReference Include="Geocoding.Microsoft" Version="4.0.1" />
@@ -75,6 +87,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\AddAndChangeWindows\GenderAddAndChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\CheckpointReportWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

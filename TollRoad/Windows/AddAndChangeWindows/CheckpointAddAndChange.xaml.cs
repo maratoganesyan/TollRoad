@@ -40,11 +40,14 @@ namespace TollRoad.Windows
             InitializeComponent();
             _changeMode = true;
             id = checkpoint.Id;
+            _lat = Convert.ToDouble(checkpoint.Latitude);
+            _lng = Convert.ToDouble(checkpoint.Longitude);
             AddressTextBox.Text = checkpoint.Address;
             PhotosView.ItemsSource = checkpoint.PhotoOfCheckpoints;
             MaxHeightTextBox.Text = checkpoint.MaxHeightOfVehicleInMm.ToString();
             MaxWidthTextBox.Text = checkpoint.MaxWidthOfVehicleInMm.ToString();
             photosOfCheckPoint = checkpoint.PhotoOfCheckpoints.ToList();
+            PhotosView.ItemsSource = photosOfCheckPoint;
         }
 
         public CheckpointAddAndChange(double lat, double lng)
@@ -52,8 +55,9 @@ namespace TollRoad.Windows
             InitializeComponent();
             _lat = lat;
             _lng = lng;
+            id = DbUtils.db.Checkpoints.Max(x => x.Id) + 1;
             SetAddress(lat, lng);
-            
+
 
         }
 
@@ -66,30 +70,85 @@ namespace TollRoad.Windows
             });
         }
 
-        private bool Validate()
-        {
-            MessageBoxManager manager = new MessageBoxManager();
-            //if (FirstCheckpointComboBox.SelectedItem == null)
-            //{
-            //    manager.Show("Ошибка сохранения", "Первый КПП не выбран");
-            //    return false;
-            //}
-            return true;
-        }
+
 
         private void ChangePhoto_CLick(object sender, RoutedEventArgs e)
         {
-
+            var button = sender as FrameworkElement;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+                PhotoOfCheckpoint photo = button.DataContext as PhotoOfCheckpoint;
+                photo.Photo = File.ReadAllBytes(openFileDialog.FileName);
+                photosOfCheckPoint[photo.NumberOfPhoto - 1] = photo;
+                PhotosView.ItemsSource = null;
+                PhotosView.ItemsSource = photosOfCheckPoint;
+            }
         }
 
         private void AddPhotoButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == true)
+            if (openFileDialog.ShowDialog() == true)
             {
+                openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
                 byte[] photo = File.ReadAllBytes(openFileDialog.FileName);
-                PhotoOfCheckpoint photo1  = new PhotoOfCheckpoint();
-                //photo1.IdCheckpoint = 0;                                    СОСО ПАВИАШВИЛИ ТАМ 0 НАДО УБРАТЬ
+                PhotoOfCheckpoint photoOfCheckpoint = new PhotoOfCheckpoint();
+                photoOfCheckpoint.IdCheckpoint = id;
+                photoOfCheckpoint.NumberOfPhoto = photosOfCheckPoint.Count() + 1;
+                photoOfCheckpoint.Photo = photo;
+                photosOfCheckPoint.Add(photoOfCheckpoint);
+                PhotosView.ItemsSource = null;
+                PhotosView.ItemsSource = photosOfCheckPoint;
+
+            }
+        }
+
+        private bool Validate()
+        {
+            MessageBoxManager manager = new MessageBoxManager();
+            if (AddressTextBox.Text.Length == 0)
+            {
+                manager.Show("Ошибка сохранения", "Адрес не введен");
+                return false;
+            }
+            if(!int.TryParse(MaxWidthTextBox.Text, out int _))
+            {
+                manager.Show("Ошибка сохранения", "Максимальная ширина автомобиля для прохода не введена");
+                return false;
+            }
+            if (!int.TryParse(MaxHeightTextBox.Text, out int _))
+            {
+                manager.Show("Ошибка сохранения", "Максимальная высота автомобиля для прохода не введена");
+                return false;
+            }
+            return true;
+        }
+
+        private void SavePhotos()
+        {
+            if (_changeMode)
+            {
+                foreach (var item in photosOfCheckPoint)
+                {
+                    PhotoOfCheckpoint photoOfCheckpoint = DbUtils.db.PhotoOfCheckpoints
+                                        .FirstOrDefault(p => p.IdCheckpoint == item.IdCheckpoint && p.NumberOfPhoto == item.NumberOfPhoto);
+                    if (photoOfCheckpoint == null)
+                        DbUtils.db.Add(item);
+                    else
+                        photoOfCheckpoint.Photo = item.Photo;
+                }
+                DbUtils.db.SaveChanges();
+            }
+            else
+            {
+                foreach (var item in photosOfCheckPoint)
+                {
+                    DbUtils.db.Add(item);
+                }
+                DbUtils.db.SaveChanges();
+
             }
         }
 
@@ -105,20 +164,25 @@ namespace TollRoad.Windows
                     else
                         checkpoint = new Checkpoint();
 
-
-
+                    checkpoint.Latitude = Convert.ToDecimal(_lat);
+                    checkpoint.Longitude = Convert.ToDecimal(_lng);
+                    checkpoint.Address = AddressTextBox.Text;
+                    checkpoint.MaxHeightOfVehicleInMm = int.Parse(MaxHeightTextBox.Text);
+                    checkpoint.MaxWidthOfVehicleInMm = int.Parse(MaxWidthTextBox.Text);
+                   
                     if (!_changeMode)
                         DbUtils.db.Checkpoints.Add(checkpoint);
 
                     DbUtils.db.SaveChanges();
+                    SavePhotos();
                     Close();
 
-                    if(!_changeMode)
+                    if (!_changeMode)
                     {
                         MessageBoxManager manager = new MessageBoxManager();
-                        int number = DbUtils.db.Routs.OrderBy(e => e.Id).Last().Id;
-                        manager.Show("Успешное сохранение", $"Маршрут сохранен под номером {number}");
-                    }    
+                        int number = DbUtils.db.Checkpoints.Max(p => p.Id);
+                        manager.Show("Успешное сохранение", $"КПП сохранен под номером {number}");
+                    }
 
                 }
                 catch (Exception ex)

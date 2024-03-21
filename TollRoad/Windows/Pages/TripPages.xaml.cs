@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TollRoad.Models;
 using TollRoad.Tools;
+using TollRoad.Tools.ReportModels;
 
 namespace TollRoad.Windows.Pages
 {
@@ -47,6 +49,35 @@ namespace TollRoad.Windows.Pages
         {
             var trip = (sender as Button).DataContext as Trip;
             new TripAddAndChange(true, trip).ShowDialog();
+        }
+
+        private async void CheckGenerateButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxManager manager = new MessageBoxManager();
+            if (Global.CurrentEmployee.IdCheckpoint == null)
+            {
+                manager.Show("Ошибка", "Чек может сгенерировать только менеджер по пропускам");
+                return;
+            }
+            try
+            {
+                var trip = (sender as Button).DataContext as Trip;
+                if(Global.CurrentEmployee.IdCheckpoint == trip.IdRouteNavigation.IdFirstCheckpoint && Global.CurrentEmployee.IdCheckpoint == trip.IdRouteNavigation.IdSecondCheckpoint)
+                {
+                    manager.Show("Ошибка", "Менеджер с другого пункта не может сгенерировать чек");
+                    return;
+                }
+                Load.Visibility = Visibility.Visible;
+                this.IsEnabled = false;
+                await ReportGeneration.DoCheckAsync(trip);
+                this.IsEnabled = true;
+                Load.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception ex)
+            {
+                manager.Show("Ошибка", "Ошибка генерации");
+                return;
+            }
         }
     }
 }

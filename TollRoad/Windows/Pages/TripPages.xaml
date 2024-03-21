@@ -36,6 +36,8 @@
 
         <modern:SimpleStackPanel HorizontalAlignment="Center"
                                  Margin="0 0 10 0"
+                                 Spacing="30"
+                                 Orientation="Horizontal"
                                  VerticalAlignment="Center">
             <ui:Button Icon="ArrowSync16"
                        FontSize="35"
@@ -43,6 +45,10 @@
                        Click="RefreshButton_Click"
                        IconFilled="True"
                        Appearance="Primary"/>
+
+            <ui:ProgressRing IsIndeterminate="True"
+                             Visibility="Collapsed"
+                             x:Name="Load"/>
 
         </modern:SimpleStackPanel>
 
@@ -77,19 +83,32 @@
                 <DataGridTemplateColumn Header="Действия">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ui:Button Icon="Edit16"
-                                       BorderBrush="White"
-                                       Appearance="Primary"
-                                       BorderThickness="1"
-                                       x:Name="ChangeButton"
-                                       Click="ChangeButton_Click"
-                                       HorizontalAlignment="Center"
-                                       IconForeground="White"
-                                       ToolTip="Изменить"/>
+                            <modern:SimpleStackPanel Spacing="10"
+                                                     Orientation="Horizontal">
+                                <ui:Button Icon="Edit16"
+                                           BorderBrush="White"
+                                           Appearance="Primary"
+                                           BorderThickness="1"
+                                           x:Name="ChangeButton"
+                                           Click="ChangeButton_Click"
+                                           HorizontalAlignment="Center"
+                                           IconForeground="White"
+                                           ToolTip="Изменить"/>
+
+                                <ui:Button Icon="Document16"
+                                           BorderBrush="White"
+                                           Appearance="Primary"
+                                           BorderThickness="1"
+                                           x:Name="CheckGenerateButton"
+                                           Click="CheckGenerateButton_Click"
+                                           HorizontalAlignment="Center"
+                                           IconForeground="White"
+                                           ToolTip="Сгенерировать чек"/>
+                            </modern:SimpleStackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
                 <DataGridTextColumn Header="Номер маршрута"
                                     Binding="{Binding IdRouteNavigation.Id}" />
                 <DataGridTextColumn Header="Гос. номер ТС"

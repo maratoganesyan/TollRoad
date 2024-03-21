@@ -53,6 +53,12 @@ namespace TollRoad.Windows.Pages
             gMapControl.DragButton = MouseButton.Left;
 
             // Добавление маркера
+            AddMarkers();
+        }
+
+        private void AddMarkers()
+        {
+
             var Checkpoints = DbUtils.db.Checkpoints.ToList();
             foreach (var coor in Checkpoints)
             {
@@ -105,6 +111,18 @@ namespace TollRoad.Windows.Pages
         {
             var checkpoint = (sender as Wpf.Ui.Controls.Button).DataContext as Checkpoint;
             new CheckpointAddAndChange(checkpoint).ShowDialog();
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            gMapControl.Markers.Clear();
+            AddMarkers();
+        }
+
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var checkpoint = (sender as Wpf.Ui.Controls.Button).DataContext as Checkpoint;
+            new CheckpointReportWindow(checkpoint).ShowDialog();
         }
     }
 }
